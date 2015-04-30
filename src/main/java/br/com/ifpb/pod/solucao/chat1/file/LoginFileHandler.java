@@ -1,5 +1,6 @@
 package br.com.ifpb.pod.solucao.chat1.file;
 
+import br.com.ifpb.pod.solucao.chat1.properties.PropertiesHandler;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,8 +13,6 @@ import java.io.IOException;
  * @author DouglasGabriel
  */
 public class LoginFileHandler {
-
-    private final String FILE_PATH = "C:\\data\\login.txt";
 
     public boolean login(String userName) throws IOException {
         String users = recuperarUsuarios();
@@ -38,7 +37,7 @@ public class LoginFileHandler {
 
     public String recuperarUsuarios() throws IOException {
         StringBuilder sb = new StringBuilder();
-        File file = new File(FILE_PATH);
+        File file = new File(PropertiesHandler.getInstance().getProperty("loginfile"));
         if (file.exists()) {
             BufferedReader br = new BufferedReader(new FileReader(file));
             while (br.ready()) {
@@ -60,7 +59,7 @@ public class LoginFileHandler {
     }
 
     private void escreverUserName(String userName) throws IOException {
-        File file = new File(FILE_PATH);
+        File file = new File(PropertiesHandler.getInstance().getProperty("loginfile"));
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -74,7 +73,7 @@ public class LoginFileHandler {
     }
 
     private void zerarAquivo() throws IOException {
-        File file = new File(FILE_PATH);
+        File file = new File(PropertiesHandler.getInstance().getProperty("loginfile"));
         if (file.exists()) {
             file.delete();
         }

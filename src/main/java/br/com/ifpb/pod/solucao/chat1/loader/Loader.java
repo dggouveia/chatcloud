@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 public class Loader {
 
     public static void main(String[] args) throws IOException {
-        LoginFileHandler loginFile = new LoginFileHandler();
-        while (!loginFile.logout(JOptionPane.showInputDialog(null, "Digite seu nome:")));
+        LoginFileHandler loginFile = new LoginFileHandler();               
+        while (!loginFile.login(JOptionPane.showInputDialog(null, "Digite seu nome:")));
     }
     
 }
